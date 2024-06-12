@@ -1,4 +1,3 @@
-// index.js
 import React, { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import atm_abi from "../artifacts/contracts/Assessment.sol/Assessment.json";
@@ -55,7 +54,7 @@ export default function HomePage() {
     const atmContract = new ethers.Contract(contractAddress, atmABI, signer);
 
     setATM(atmContract);
-    setShowSecondPage(true); // Show the second page after connecting account
+    setShowSecondPage(true);
   };
 
   const getBalance = async () => {
@@ -94,9 +93,16 @@ export default function HomePage() {
     }
   };
 
-  // Function to exit the program
+  const resetBalance = async () => {
+    if (atm) {
+      let tx = await atm.resetBalance();
+      await tx.wait();
+      getBalance();
+    }
+  };
+
   const exitProgram = () => {
-    window.close(); // Close the current window/tab
+    window.close();
   };
 
   const SecondPage = () => {
@@ -151,7 +157,13 @@ export default function HomePage() {
         </div>
         <br />
         <div>
-          <button className="btn btn5" onClick={exitProgram}>
+          <button className="btn btn5" onClick={resetBalance}>
+            Reset Balance
+          </button>
+        </div>
+        <br />
+        <div>
+          <button className="btn btn6" onClick={exitProgram}>
             <b>Exit</b>
           </button>
         </div>
@@ -170,7 +182,6 @@ export default function HomePage() {
           <h1>Smart-Contract-Management-ETH-AVAX - ATM Project</h1>
           <h2>Project by: John Armand V. Yabut</h2>
         </center>
-        
       </header>
       {!account ? (
         <div className="centered">
@@ -230,41 +241,31 @@ export default function HomePage() {
           outline: none;
           transition: background-color 0.3s ease;
           font-family: 'Roboto', sans-serif;
-          box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1),
-                      -3px -3px 10px rgba(255, 255, 255, 0.5);
+          box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
         }
 
         .btn:hover {
           background-color: #341f97;
         }
 
-        .btn:active {
-          transform: translateY(1px);
-        }
-
         .input-field {
           padding: 10px;
-          font-size: 16px;
+          margin: 5px;
           border-radius: 5px;
           border: 1px solid #ccc;
-          margin-right: 10px;
           font-family: 'Roboto', sans-serif;
-          box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.1),
-                      inset -3px -3px 8px rgba(255, 255, 255, 0.5);
         }
 
         .neumorphic-card {
           background: #e0e0e0;
-          border-radius: 16px;
+          border-radius: 12px;
+          box-shadow: 7px 7px 15px #bebebe, -7px -7px 15px #ffffff;
           padding: 20px;
-          box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2),
-                      -4px -4px 8px rgba(255, 255, 255, 0.5);
-          margin: 20px;
-          width: 80%;
-          max-width: 600px;
+          max-width: 400px;
+          width: 100%;
+          text-align: center;
         }
-      `}
-      </style>
+      `}</style>
     </main>
   );
 }

@@ -8,6 +8,7 @@ contract Assessment {
     event Deposit(uint256 amount);
     event Withdraw(uint256 amount);
     event Transfer(address indexed to, uint256 amount);
+    event BalanceReset(uint256 newBalance);
 
     constructor(uint256 initBalance) payable {
         owner = payable(msg.sender);
@@ -60,4 +61,9 @@ contract Assessment {
         emit Transfer(_to, _amount);
     }
 
+    // Function to reset the balance to a fixed amount
+    function resetBalance() public onlyOwner {
+        balance = 1;
+        emit BalanceReset(balance);
+    }
 }
