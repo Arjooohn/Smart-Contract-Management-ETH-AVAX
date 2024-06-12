@@ -18,8 +18,11 @@ To run this project locally, follow these steps:
 1. Clone the repository: git clone <repository-url>
 2. Navigate into the project directory: cd <project-directory>
 3. Install dependencies: npm install or npm i
-4. Start the development server: npm start or npm run dev (which is the same in the metacrafters guide or lessons)
-5. Open your web browser and navigate to `http://localhost:3000`.
+4. Open two additional terminals in your VS code
+5. In the second terminal type: npx hardhat node
+6. In the third terminal, type: npx hardhat run --network localhost scripts/deploy.js
+7. Start the development server: npm start or npm run dev (which is the same in the metacrafters guide or lessons)
+8. Open your web browser and navigate to `http://localhost:3000`.
 
 ## Usage
 
