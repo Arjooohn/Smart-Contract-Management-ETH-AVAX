@@ -167,7 +167,7 @@ export default function HomePage() {
     <main className="container">
       <header>
         <center>
-          <h1>Welcome to my Smart-Contract-Management-ETH-AVAX Project</h1>
+          <h1>Smart-Contract-Management-ETH-AVAX - ATM Project</h1>
           <h2>Project by: John Armand V. Yabut</h2>
         </center>
         
