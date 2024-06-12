@@ -8,8 +8,8 @@ This project is a web application that allows users to interact with an Ethereum
 
 - React
 - ethers.js
-- MetaMask
-- Ethereum smart contracts
+- MetaMask Wallet
+- Ethereum smart contracts (Using Solidity Programming Language)
 
 ## Installation
 
